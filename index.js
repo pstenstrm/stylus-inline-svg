@@ -4,25 +4,37 @@
 var
 	fs     = require('fs'),
 	path   = require('path'),
+	parse  = require('url').parse,
 	stylus = require('stylus');
 
 module.exports = function (options) {
 	var
 		stylusUrl = stylus.url.apply(this, arguments);
 
-	return function(url) {
+	options = options || {paths: []};
+
+	function fn(url) {
 		var 
-			literal = new stylus.nodes.Literal('url("' + url.string + '")'),
-			ext     = path.extname(url.string),
-			found, buf, optimized;
+			localUrl = url,
+			compiler = new stylus.Compiler(localUrl),
+			ext, found, buf;
+
+		compiler.isURL = true;
+		localUrl = localUrl.nodes.map(function(node) {
+			return compiler.visit(node);
+		}).join('');
+
+		localUrl = parse(localUrl);
+
+		ext = path.extname(localUrl.href);
 
 		if(ext !== '.svg') {
 			return stylusUrl.apply(this, arguments);
 		}
 
-		found = stylus.utils.lookup(url.string, options.paths);
+		found = stylus.utils.lookup(localUrl.pathname, options.paths);
 
-		if(!found) return literal;
+		if(!found) return new stylus.nodes.Literal('url("' + localUrl.href + '")');
 
 		buf = fs.readFileSync(found);
 
@@ -33,6 +45,9 @@ module.exports = function (options) {
 
 		return new stylus.nodes.Literal("url('data:image/svg+xml;utf8," + buf + "')");
 	};
+
+	fn.raw = true;
+	return fn;
 };
 
 })();
