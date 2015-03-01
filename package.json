@@ -11,12 +11,23 @@
     "svg",
     "data-uri"
   ],
-  "author": "Per Stenström",
+  "author": {
+    "name": "Per Stenström",
+    "email": "per.stenstrom@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "stylus": "^0.50.0"
   },
   "dependencies": {
 
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pstenstrm/stylus-inline-svg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pstenstrm/stylus-inline-svg/issues"
+  },
+  "homepage": "https://github.com/pstenstrm/stylus-inline-svg",
 }
