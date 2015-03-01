@@ -15,5 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "stylus": "^0.50.0"
+  },
+  "dependencies": {
+
   }
 }

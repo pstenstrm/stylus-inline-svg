@@ -14,7 +14,7 @@ module.exports = function (options) {
 		var 
 			literal = new stylus.nodes.Literal('url("' + url.string + '")'),
 			ext     = path.extname(url.string),
-			found, buf;
+			found, buf, optimized;
 
 		if(ext !== '.svg') {
 			return stylusUrl.apply(this, arguments);
@@ -26,7 +26,12 @@ module.exports = function (options) {
 
 		buf = fs.readFileSync(found);
 
-		return new stylus.nodes.Literal('url("data:image/svg+xml;utf8,' + buf + '")');
+		buf = String(buf)
+			.replace(/<\?xml(.+?)\?>/, '')
+			.replace(/^\s+|\s+$/g, '')
+			.replace(/(\r\n|\n|\r)/gm, '');
+
+		return new stylus.nodes.Literal("url('data:image/svg+xml;utf8," + buf + "')");
 	};
 };
 

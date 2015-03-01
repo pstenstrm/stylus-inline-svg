@@ -10,5 +10,7 @@ stylus(String(str))
 	.render(function (err, data) {
 		if(err) throw err;
 
-		console.log(data);
+		fs.writeFile('test/main.css', data, function(err) {
+			if(err) throw err;
+		});
 	});
