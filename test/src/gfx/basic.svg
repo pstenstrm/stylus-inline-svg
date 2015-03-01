@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg">
+  <path id="motionPath_1" fill="none" stroke-width="2" stroke="lawngreen" d="M45,10 A35,35 0 0,1 45,80 A35,35 0 0,1 45,10z"></path>
+  <circle cx="40" cy="40" r="10" fill="hotpink" opacity="0">
+</svg>

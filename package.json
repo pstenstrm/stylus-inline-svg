@@ -1,0 +1,19 @@
+{
+  "name": "stylus-inline-svg",
+  "version": "0.0.0",
+  "description": "Inline SVG as data uri without Base64 encoding",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "stylus",
+    "svg",
+    "data-uri"
+  ],
+  "author": "Per Stenström",
+  "license": "ISC",
+  "devDependencies": {
+    "stylus": "^0.50.0"
+  }
+}
