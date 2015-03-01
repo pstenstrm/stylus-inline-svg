@@ -6,7 +6,7 @@ var
 
 stylus(String(str))
 	.set('filename', 'main.css')
-	.define('url', stylus.url({'paths': [__dirname + '/src']}))
+	.define('url', inlineSVG({'paths': [__dirname + '/src']}))
 	.render(function (err, data) {
 		if(err) throw err;
 
