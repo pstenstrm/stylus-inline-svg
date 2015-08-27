@@ -41,6 +41,8 @@ module.exports = function (options) {
 		buf = String(buf)
 			.replace(/<\?xml(.+?)\?>/, '')
 			.replace(/^\s+|\s+$/g, '')
+			.replace(/>\s+</g, '><')
+			.replace(/\s+/g, ' ')
 			.replace(/(\r\n|\n|\r)/gm, '');
 
 		return new stylus.nodes.Literal("url('data:image/svg+xml;utf8," + buf + "')");
