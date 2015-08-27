@@ -1,6 +1,6 @@
 {
   "name": "stylus-inline-svg",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Inline SVG as data uri without Base64 encoding",
   "main": "index.js",
   "scripts": {
