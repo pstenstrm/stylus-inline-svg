@@ -5,7 +5,8 @@ var
 	fs     = require('fs'),
 	path   = require('path'),
 	parse  = require('url').parse,
-	stylus = require('stylus');
+	stylus = require('stylus'),
+	escape = require('querystring').escape;
 
 module.exports = function (options) {
 	var
@@ -43,9 +44,11 @@ module.exports = function (options) {
 			.replace(/^\s+|\s+$/g, '')
 			.replace(/>\s+</g, '><')
 			.replace(/\s+/g, ' ')
-			.replace(/(\r\n|\n|\r)/gm, '');
+			.replace(/(\r\n|\n|\r)/gm, '')
+			.replace(/\"/g, "'")
+			.replace(/#|<|>|&/g, escape);
 
-		return new stylus.nodes.Literal("url('data:image/svg+xml;charset=utf8," + buf + "')");
+		return new stylus.nodes.Literal('url("data:image/svg+xml;charset=utf8,' + buf + '")');
 	}
 
 	fn.raw = true;
