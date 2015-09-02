@@ -45,8 +45,8 @@ module.exports = function (options) {
 			.replace(/\s+/g, ' ')
 			.replace(/(\r\n|\n|\r)/gm, '');
 
-		return new stylus.nodes.Literal("url('data:image/svg+xml;utf8," + buf + "')");
-	};
+		return new stylus.nodes.Literal("url('data:image/svg+xml;charset=utf8," + buf + "')");
+	}
 
 	fn.raw = true;
 	return fn;
